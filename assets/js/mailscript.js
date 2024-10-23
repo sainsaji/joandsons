@@ -1,34 +1,32 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById('contactForm');
+document.getElementById('contactForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    
+    const formData = new FormData(event.target);
+    const data = {
+        fullName: formData.get('full-name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        message: formData.get('message')
+    };
 
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault(); // Prevent default form submission
+    try {
+        const response = await fetch('https://joandsonscontactus.azurewebsites.net/api/HttpTrigger1', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
 
-        const formData = {
-            fullName: form['full-name'].value,
-            email: form['email'].value,
-            phone: form['phone'].value,
-            message: form['message'].value
-        };
-
-        console.log("Form submitted with data:", formData); // Log the form data
-
-        try {
-            const response = await fetch('https://joandsonscontactus.azurewebsites.net/api/HttpTrigger1?', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-
-            const result = await response.json();
-            console.log("Response from server:", result); // Log the server response
-            alert(result.body); // Show success message
-
-        } catch (error) {
-            console.error('Error:', error);
-            alert('There was an error sending your message.');
+        // Check if the response is OK (status code 200-299)
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-    });
+
+        const result = await response.json(); // Parse the JSON response
+        console.log(result.message); // Log the message from the response
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
 });
