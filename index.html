@@ -943,7 +943,7 @@ lessen environmental impact and advance a circular economy by utilizing renewabl
 									<textarea placeholder="Your Message" id="message" rows="5" name="message" required></textarea>
 								</div>
 								<div>
-									<button type="button" class="srex-btn srex-btn--secondary">
+									<button type="submit" class="srex-btn srex-btn--secondary">
 										Submit Now
 										<i class="fa-solid fa-arrow-right"></i>
 									</button>
@@ -1228,35 +1228,6 @@ lessen environmental impact and advance a circular economy by utilizing renewabl
 
 		<!-- Custom JS -->
 		<script src="./assets/js/custom.js"></script>
-		<script>
-			const form = document.getElementById('contactForm');
-			form.addEventListener('submit', async (event) => {
-				event.preventDefault(); // Prevent default form submission
-		
-				const formData = {
-					fullName: form['full-name'].value,
-					email: form['email'].value,
-					phone: form['phone'].value,
-					message: form['message'].value
-				};
-		
-				try {
-					const response = await fetch('https://joandsonscontactus.azurewebsites.net/api/HttpTrigger1?code=JruobYBo_cqTb_X1E3elj1WUR82x6vo9Bv-01RuCEjrGAzFuCeqTEg%3D%3D', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify(formData)
-					});
-		
-					const result = await response.json();
-					alert(result.body); // Show success message
-		
-				} catch (error) {
-					console.error('Error:', error);
-					alert('There was an error sending your message.');
-				}
-			});
-		</script>
+		<script src="./assets/js/mailscript.js"></script>
 	</body>
 </html>
