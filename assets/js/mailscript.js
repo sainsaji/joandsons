@@ -3,7 +3,10 @@ document.getElementById('contactForm').addEventListener('submit', async function
 
     const formData = new FormData(event.target);
     const data = {
-        message: formData.get('message') // Assuming your form has a 'message' field
+        name: formData.get('full-name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        message: formData.get('message')
     };
 
     try {
@@ -16,7 +19,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
         });
 
         const result = await response.json(); // Parse the JSON response
-        console.log(result); // Log the echoed response
+        console.log(result); // Log the echoed response and confirmation message
 
     } catch (error) {
         console.error('Error:', error);
