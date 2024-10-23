@@ -986,6 +986,10 @@ input:focus {
   font-size: 12px;
   margin-left: 5px;
 }
+.ud-main-menu__logo img {
+  width: 135px; /* Change this value to increase the logo size */
+  height: auto; /* Keeps the aspect ratio */
+}
 .ud-main-menu ul > li > a:hover {
   color: #1D8F2C;
 }
