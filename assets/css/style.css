@@ -1517,7 +1517,7 @@ input:focus {
 .srex-hero-one__left__enery__efficient {
   background-color: #1D8F2C;
   border-radius: 20px;
-  padding: 40px 75px;
+  padding: 30px 30px;
   text-align: center;
 }
 @media (max-width: 767px) {
@@ -1526,7 +1526,7 @@ input:focus {
   }
 }
 .srex-hero-one__left__enery__efficient h2 {
-  font-size: 68px;
+  font-size: 30px;
   font-style: normal;
   font-weight: 700;
   line-height: 115%; /* 78.2px */
